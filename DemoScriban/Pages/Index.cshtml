@@ -1,0 +1,47 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Demo Scriban</h1>
+    <p>Learn about <a href="https://github.com/scriban/scriban">Scriban</a>.</p>
+</div>
+<div>
+    <form method="post">
+        <div class="row">
+            <div class="col-6">
+                <label for="text">Template</label>
+                <textarea class="form-control" rows="10" id="Template" name="Template" placeholder="Template">
+                    @if (!string.IsNullOrEmpty(Model.TemplateHtml))
+                    {
+                        @Model.TemplateHtml
+                    }
+                </textarea>
+            </div>
+            <div class="col-6">
+                <label for="text">Data</label>
+                <textarea class="form-control" rows="10" id="Data" name="Data" placeholder="Data">
+                    @if (!string.IsNullOrEmpty(Model.Data))
+                    {
+                        @Model.Data
+                    }
+                </textarea>
+            </div>
+            <div class="col-12">
+                <label for="text">Result</label>
+                <textarea class="form-control" rows="10" id="Result" name="Result" placeholder="Result" readonly>
+                    @if (!string.IsNullOrEmpty(Model.Result))
+                    {
+                        @Html.Raw(Model.Result)
+                    }
+                </textarea>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </div>
+        </div>
+    </form>
+
+</div>
